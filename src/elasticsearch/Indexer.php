@@ -200,7 +200,9 @@ class Indexer{
 				if($field == 'post_date'){
 					$document[$field] = date('c',strtotime($post->$field));
 				}else if($field == 'post_content'){
-					$document[$field] = strip_tags($post->$field);
+					// Remove shortcodes and tags, but leave the contents inside
+					$post_content = preg_replace("~(?:\[/?)[^/\]]+/?\]~s", '', strip_tags($post->$field));
+					$document[$field] = $post_content;
 				}else{
 					$document[$field] = $post->$field;
 				}
