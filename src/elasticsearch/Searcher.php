@@ -127,6 +127,7 @@ class Searcher{
 	public static function _buildQuery($search, $facets = array()){
 		global $blog_id;
 
+		$search = str_replace(array('@', '#', '*', '&', '$', '^'), '', $search);
 		$search = str_ireplace(array(' and ', ' or '), array(' AND ', ' OR '), $search);
 		$search = $search.'~'; // fuzzy by default
 
