@@ -176,7 +176,8 @@ class Searcher{
 		if(count($fields) > 0){
 			$qs = array(
 				'fields' => $fields,
-				'query' => $search
+				'query' => $search,
+				'default_operator' => 'AND'
 			);
 
 			$fuzzy = Config::option('fuzzy');
