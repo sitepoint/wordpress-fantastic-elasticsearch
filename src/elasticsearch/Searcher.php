@@ -128,6 +128,7 @@ class Searcher{
 		global $blog_id;
 
 		$search = str_ireplace(array(' and ', ' or '), array(' AND ', ' OR '), $search);
+		$search = $search.'~'; // fuzzy by default
 
 		$fields = array();
 		$musts = array();
