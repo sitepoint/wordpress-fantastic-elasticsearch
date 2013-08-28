@@ -18,6 +18,9 @@ class Category{
 		$cats = array();
 
 		$enabled = Config::option('enable_categories');
+		if (!is_array($enabled)) {
+			$enabled = array();
+		}
 
 		if(isset($wp_query->query_vars['category_name']) && !empty($wp_query->query_vars['category_name'])){
 			$cat = get_category_by_slug($wp_query->query_vars['category_name']);
