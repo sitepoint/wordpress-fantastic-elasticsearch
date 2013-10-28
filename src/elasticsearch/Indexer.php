@@ -219,7 +219,7 @@ class Indexer{
 					if(!in_array($term->slug, $document[$tax])){
 						$document[$tax][] = $term->slug;
 						$document[$tax . '_name'][] = $term->name;
-						if(strlen($term->description) > 0) {
+						if(strlen($term->description) > 0){
 							$document[$tax . '_name'][] = $term->description;
 						}
 					}
@@ -231,6 +231,9 @@ class Indexer{
 							if(!in_array($parent->slug, $document[$tax])){
 								$document[$tax][] = $parent->slug;
 								$document[$tax . '_name'][] = $parent->name;
+								if(strlen($parent->description) > 0){
+									$document[$tax . '_name'][] = $parent->description;
+								}
 							}
 
 							if(isset($parent->parent) && $parent->parent){
